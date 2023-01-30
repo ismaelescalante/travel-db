@@ -1,6 +1,6 @@
 const express = require('express')
-require('dotenv').config({ path: '../src/.env' })
 const winston = require('winston')
+require('dotenv').config()
 
 const app = express()
 

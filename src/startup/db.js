@@ -4,5 +4,6 @@ const winston = require('winston')
 mongoose.set('strictQuery', false)
 
 module.exports = function(){
-    mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true }).then(() => winston.info('Hay conexión'))
+    const db = process.env.MONGO_URI
+    mongoose.connect(db).then(() => winston.info('Hay conexión'))
 }
