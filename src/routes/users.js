@@ -4,10 +4,10 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/", validateBody, async (req, res) => {
-  let user = await User.findOne({ email: req.body.email, username: req.body.usename });
+  let user = await User.findOne({ email: req.body.email, username: req.body.username });
   if (user) return res.status(400).send("El usuario ya está registrado");
 
-  let username = await User.findOne({name: req.body.name})
+  let username = await User.findOne({name: req.body.username})
   if(username) return res.status(400).send('User already exists')
 
   user = new User(req.body);
