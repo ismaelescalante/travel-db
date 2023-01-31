@@ -3,8 +3,13 @@ const { User, validateBody } = require("../models/users");
 const express = require("express");
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  const result = await User.find({})
+  res.send(result)
+})
+
 router.post("/", validateBody, async (req, res) => {
-  let user = await User.findOne({ email: req.body.email, username: req.body.username });
+  let user = await User.findOne({ email: req.body.email});
   if (user) return res.status(400).send("El usuario ya está registrado");
 
   let username = await User.findOne({username: req.body.username})
